@@ -1,10 +1,9 @@
 import { neon } from "@neondatabase/serverless";
 
-export const DATABASE_URL = process.env.DATABASE_URL || "";
+export const DATABASE_URL =
+  process.env.DATABASE_URL || "postgresql://placeholder:placeholder@localhost/neondb";
 
-export const sql = DATABASE_URL
-  ? neon(DATABASE_URL)
-  : ((async () => []) as unknown as ReturnType<typeof neon>);
+export const sql = neon(DATABASE_URL);
 
 /**
  * Calculates the current Noon (12:00 PM) Reset Window Key.
